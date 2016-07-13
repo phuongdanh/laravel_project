@@ -22,8 +22,11 @@ Route::get('/home', 'HomeController@index');
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'category'], function () {
 	    Route::get('list',['as'=>'admin.cate.list','uses' => 'CategoryController@getList']);
-	    Route::get('add',['as'=>'admin.cate.getAdd','uses' => 'CategoryController@getAdd']);
-	    Route::post('add',['as'=>'admin.cate.postAdd','uses' => 'CategoryController@postAdd']);
+	    Route::get('getAdd',['as'=>'admin.cate.getAdd','uses' => 'CategoryController@getAdd']);
+	    Route::post('postAdd',['as'=>'admin.cate.postAdd','uses' => 'CategoryController@postAdd']);
+	    Route::get('delete/{id}', ['as' => 'deleteCategory', 'uses' => 'CategoryController@deleteCategory']);
+	    Route::get('edit/{id}', ['as' => 'editCategory', 'uses' => 'CategoryController@editCategory']);
+	    Route::post('postEdit', ['as' => 'postEditCategory', 'uses' => 'CategoryController@postEdit']);
 	});
 	Route::group(['prefix' => 'product'], function () {
 	    Route::get('getList', ['as' => 'getListProduct', 'uses' => 'ProductController@getList']);

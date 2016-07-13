@@ -23,7 +23,8 @@
             "App\\": "app/"
         },
         "files":[
-            "App/Helpers/supportFunction.php" 
+            "App/Helpers/supportFunction.php" ,
+            "App/Phuongdanh/function.php"
         ]
     },
     "autoload-dev": {

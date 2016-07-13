@@ -19,18 +19,6 @@ class SupportFunction
 	    return $str;
 	}
 
-	public static function cate_parent($data, $parent = 0, $str = "", $select = 0) {
-	    foreach ($data as $key => $value) {
-	        if ($value["parent_id"] == $parent) {
-	            if($select != 0 && $value['id'] == $select){
-	                echo "<option selected='selected' value='" . $value['id'] . "'>" . $str . $value['name'] . "</option>";
-	            }else{
-	                echo "<option value='" . $value['id'] . "'>" . $str . $value['name'] . "</option>";
-	            }
-	            cate_parent($data, $value["id"], $str . "--");
-	        }
-	    }
-	}
 	
 }
 ?>

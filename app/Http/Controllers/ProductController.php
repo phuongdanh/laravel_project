@@ -32,7 +32,7 @@ class ProductController extends Controller
         #thuc hien insert data vao du lieu
         $product = new Product;
         $product->name = $request->txtName;
-        $product->slug = $request->txtName;
+        $product->slug = SupportFunction::convertStr($request->txtName);
         $product->price = $request->txtPrice;
         $product->saleprice = $request->txtSalePrice;
         $product->image = $fileName;

@@ -13,33 +13,27 @@
 @endif
     <!-- /.col-lg-12 -->
     <div class="col-lg-7" style="padding-bottom:120px">
-        <form action="{!! route('admin.categories.postAdd') !!}" method="POST">
+        <form action="{!! route('admin.cate.postAdd') !!}" method="POST">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Category Parent</label>
                 <select class="form-control" name="parent_id">
                     <option value="0">Please Choose Category</option>
-                    <!-- @foreach($parent as $item)
-                    <option value="{!! $item["id"] !!}">{!! $item["name"] !!}</option>
-                    @endforeach -->
-                    <?php cate_parent($parent); ?>
+                    <?php cate_parent($categories); ?>
                 </select>
             </div>
             <div class="form-group">
                 <label>Category Name</label>
                 <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{{ old('txtCateName') }}"/>
             </div>
-            <div class="form-group">
-                <label>Category Order</label>
-                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order"  value="{{ old('txtOrder') }}"/>
-            </div>
+            
             <div class="form-group">
                 <label>Category Keywords</label>
                 <input class="form-control" name="txtKey" placeholder="Please Enter Category Keywords" value="{{ old('txtKey') }}"/>
             </div>
             <div class="form-group">
                 <label>Category Description</label>
-                <textarea class="form-control" rows="3" name="textDescription">{{ old('textDescription') }}</textarea>
+                <textarea class="form-control" rows="3" name="txtDescription">{{ old('txtDescription') }}</textarea>
             </div>
             <div class="form-group">
                 <label>Category Status</label>

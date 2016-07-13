@@ -4,9 +4,14 @@
 @section('function', 'Danh sách')
 @section('content')
 <!-- /.col-lg-12 -->
-@if (Session::has('flash_message'))
-    <div class="alert alert-{{ Session::get('flash_level') }}">{{ Session::get('flash_message') }}</div>
-@endif
+<div class="col-md-12">
+    @if(Session::has('flash_message'))
+    <div class="alert alert-{!! Session::get('flash_level') !!}">
+        {!! Session::get('flash_message') !!}
+    </div>
+    @endif
+</div>
+
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
         <tr align="center">

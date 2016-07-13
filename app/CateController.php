@@ -31,4 +31,4 @@ class CateController extends Controller
 	}
 	
 }
-  ?>
+ ?>
