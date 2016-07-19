@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('users.home');
-});
+
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'category'], function () {

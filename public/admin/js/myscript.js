@@ -56,4 +56,6 @@ $('.addMore').click(function(){
       $(html).insertBefore(this);
 });
 
-
+document.getElementById("file-2").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};

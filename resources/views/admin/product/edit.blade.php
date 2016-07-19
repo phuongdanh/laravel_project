@@ -21,10 +21,7 @@
         <div class="form-group">
             <label>Danh mục</label>
             <select class="form-control" name="category">
-                <option value="0">Please Choose Category</option>
-                <option value="1">Áo thun</option>
-                <option value="2">Áo khoắc</option>
-                <option value="2">Áo sơ mi</option>
+                <?php cate_parent($cate, 0, "", $product->cate_id); ?>
             </select>
         </div>
         <div class="form-group">
@@ -69,7 +66,7 @@
         <br />
         <div class="form-group">
             <label>Mô tả</label>
-            <textarea class="form-control" rows="3" name="description">{{ old('description', isset($product->description) ? $product->description : null) }}</textarea>
+            <textarea class="form-control ckeditor" rows="3" name="description">{!! old('description', isset($product->description) ? $product->description : null) !!}</textarea>
         </div>
         <div class="form-group">
             <label>Từ khóa</label>

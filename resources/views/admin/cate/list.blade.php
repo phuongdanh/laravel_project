@@ -65,7 +65,7 @@
                 <label>Danh mục cha</label>
                 <select class="form-control" name="parent_id">
                     <option value="0">Chọn danh mục cha</option>
-                    <?php cate_parent($data); ?>
+                    <?php cate_parent($data, 0, "", 0); ?>
                 </select>
             </div>
             <div class="form-group">
@@ -97,7 +97,7 @@
                 <label>Danh mục cha</label>
                 <select class="form-control" name="parent_id">
                     <option value="0">Chọn danh mục cha</option>
-                    <?php cate_parent($data); ?>
+                    <?php cate_parent($data, 0, "", 0); ?>
                 </select>
             </div>
             <div class="form-group">

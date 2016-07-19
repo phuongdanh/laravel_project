@@ -1,22 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+   
     /**
      * Show the application dashboard.
      *
@@ -24,6 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $new_products = DB::table('products')->select('id', 'name', 'saleprice','image', 'slug')->orderBy('created_at', 'DESC')->skip(0)->take(8)->get();
+        return view('users.pages.home',compact('new_products'));
     }
 }

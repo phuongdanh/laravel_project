@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Product;
-// use App\Category;
+use App\Category;
 use App\Image;
 use File;
 use App\Helpers\SupportFunction;
@@ -19,9 +19,9 @@ class ProductController extends Controller
     #thuc hien add san pham vao database
     #xuat form ra cho nguoi dung nhap du lieu
     function getAdd(){
-        //$cate = Category::select('id', 'name', 'parent_id')->get()->toArray();
+        $cate = Category::select('id', 'name', 'parent_id')->get()->toArray();
         $sizes = Size::select('id', 'name')->get();
-        return view('admin.product.add', compact('sizes'));
+        return view('admin.product.add', compact('sizes','cate'));
     }
     
     #Thuc hien qua trinh xu ly du lieu request tu form
@@ -102,6 +102,7 @@ class ProductController extends Controller
 
     #function getEdit thuc hien show form cho user nhap data de update
     function getEdit($id){
+        $cate = Category::select('id', 'name', 'parent_id')->get()->toArray();
         $product = Product::find($id);
         $sizes = Size::select('id', 'name')->get();
         $productImages = Product::find($id)->getImages;
@@ -111,7 +112,7 @@ class ProductController extends Controller
         	$sizeProducts[] = $value['size_id'];
         }
         // $cate = Category::select('id', 'name', 'parent_id')->get()->toArray();
-        return view('admin.product.edit',compact('product', 'productImages','sizes', 'sizeProducts'));
+        return view('admin.product.edit',compact('product', 'productImages','sizes', 'sizeProducts','cate'));
     }
 
     #function postEdit thu hien xu ly cac du lieu nhap vao cua tu Form

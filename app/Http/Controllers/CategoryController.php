@@ -40,19 +40,49 @@ class CategoryController extends Controller
 
     #function xoa danh muc san pham
     function deleteCategory($id){
-        $data = Category::where('id',$id)->orWhere('parent_id',$id)->get()->toArray();
-        $number = count($data);
-        if($number <= 1){
-            $category = Category::find($id);
-            $category->delete($id);
-            return redirect()->back()->with(['flash_message' => 'You have just deleted a catelog!', 'flash_level' => 'success']);
+        $data = Category::where('parent_id',$id)->get()->toArray();
+        if(count($data) > 0){
+            return redirect()->route('admin.cate.list')->with(['flash_message' => 'Bạn không được xóa danh mục này, vì rất nhiều danh mục con trong nó', 'flash_level' => 'warning']);
         }else{
-            $ids_to_delete = array_map(function($item){ return $item['id']; }, $data);
-            Category::whereIn('id', $ids_to_delete)->delete(); 
-            return redirect()->back()->with(['flash_message' => 'You have just deleted a catelog and its children!', 'flash_level' => 'success']);
+            $currentCate = Category::find($id);
+            $currentCate->delete();
+            return redirect()->route('admin.cate.list')->with(['flash_message' => 'Bạn vừa xóa thành công một thư mục!', 'flash_level' => 'success']);
         }
         
     }
+    // #function xoa danh muc san pham
+    // function deleteCategory($id){
+        
+    //     $currentCate = Category::find($id);
+    //     if($currentCate){
+    //         echo 'Chung da ton tai';
+    //         $currentCate->delete();
+
+    //         $data = Category::where('parent_id',$id)->get()->toArray();
+    //         $number = count($data);
+    //         if($number <= 0){
+    //             // return redirect()->route('admin.cate.list')->with(['flash_message' => 'You have just deleted a catelog!', 'flash_level' => 'success']);
+    //             $x = 1;
+    //         }
+
+    //         if($number > 0){
+    //         $ids_to_delete = array_map(function($item){ return $item['id']; }, $data);
+    //             for($i = 0; $i < count($ids_to_delete); $i++){
+    //                 echo $ids_to_delete[$i].'<hr />';
+    //                 $this->deleteCategory($ids_to_delete[$i]);
+    //             }
+    //             $x = 0;
+    //         }
+
+    //     }
+    //     if(isset($x)){
+    //         if($x == 1){
+    //             return redirect()->route('admin.cate.list')->with(['flash_message' => 'You have just deleted a catelog!', 'flash_level' => 'success']);
+    //         }
+    //     }
+        
+        
+    // }
 
     #function editCategory xu ly ajax de sua danh muc
     function editCategory($id){

@@ -20,10 +20,7 @@
         <div class="form-group">
             <label>Danh mục sản phẩm</label>
             <select class="form-control" name="category">
-                <option value="0">chọn danh mục</option>
-                <option value="1">Áo thun</option>
-                <option value="2">Áo sơ mi</option>
-                <option value="3">Áo khoắc</option>
+                <?php cate_parent($cate, 0, "", 0); ?>
             </select>
         </div>
         <div class="form-group">
@@ -51,7 +48,7 @@
         </div>
         <div class="form-group">
             <label>Mô tả sản phẩm</label>
-            <textarea required class="form-control" rows="3" name="description">{{ old('description') }}</textarea>
+            <textarea required class="form-control ckeditor" rows="3" name="description">{{ old('description') }}</textarea>
         </div>
         <div class="row">
             
