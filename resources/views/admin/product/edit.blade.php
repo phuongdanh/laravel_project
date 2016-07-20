@@ -81,7 +81,7 @@
         <div class="data _size">
             <span><b>Chọn size cho sản phẩm</b></span><br />
             @foreach($sizes AS $size)
-            @if (in_array($size->id, $sizeProducts))
+            @if(in_array($size->id, $sizeProducts))
                 <label class="checkbox-inline">
                   <input type="checkbox" name="size[]" checked value="{{ $size->id }}">{{ $size->name }}
                 </label>

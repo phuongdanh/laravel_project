@@ -16,6 +16,10 @@ class Category extends Model
         'name', 'slug' , 'description', 'parent_id', 'user_id'
     ];
 
+    public function getProducts(){
+        return $this->hasMany('App\Product');
+    }
+    
     
     public $timestamps = true;
 }

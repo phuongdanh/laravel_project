@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $new_products = DB::table('products')->select('id', 'name', 'saleprice','image', 'slug')->orderBy('created_at', 'DESC')->skip(0)->take(8)->get();
+        $new_products = DB::table('products')->select('id', 'name', 'saleprice','image', 'slug', 'cate_id')->orderBy('created_at', 'DESC')->skip(0)->take(8)->get();
         return view('users.pages.home',compact('new_products'));
     }
 }

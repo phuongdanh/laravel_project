@@ -27,17 +27,17 @@
 		<![endif]-->
 	</head>
     <body>		
-		@include('users.block.header');
+		@include('users.block.header')
 		<div id="wrapper" class="container">
-			@include('users.block.menu');
-			@include('users.block.slider');
+			@include('users.block.menu')
+			
 			
 
 			<!-- noi dung se duoc hien thi tai day -->
 			@yield('content')
 
 			<!-- inlude phan footer vao -->
-			@include('users.block.footer');
+			@include('users.block.footer')
 		</div>
 		<script src="{{ asset('public/themes/js/common.js') }}"></script>
 		<script src="{{ asset('public/themes/js/jquery.flexslider-min.js') }}"></script>

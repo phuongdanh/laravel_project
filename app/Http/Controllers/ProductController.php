@@ -172,7 +172,32 @@ class ProductController extends Controller
     }
 
 
-
+    #cac function danh cho trang users ----------------------------------------------------
+    #function showProduct se show ra nhung san pham thuoc ve mot id nao do
+    function showProduct($id){
+        $cate = Category::where('id',$id)->first();
+        $cate_name = $cate->name;
+        $products = Product::select('id','name', 'saleprice', 'image', 'slug')->where('cate_id', $id)->orderBy('id', 'DESC')->get();
+        return view('users.pages.product', compact('products', 'cate_name'));
+    }
+    #function viewDetail sẽ show ra chi tiếc của một sản phẩm
+    function viewDetail($id){
+        $product = Product::where('id', $id)->first()->toArray();
+        $sizes = Size::select('id', 'name')->get();
+        $aSize = Product::find($id)->getsizes->toArray();
+        $sizeProducts = array();
+        foreach ($aSize as $value) {
+            $sizeProducts[] = $value['size_id'];
+        }
+        $result_size = array();
+        foreach($sizes AS $size){
+            if (in_array($size->id, $sizeProducts)){
+                $result_size[] = $size;
+            }
+        }
+        #var_dump($result_size);
+        return view('users.pages.detail', compact('product', 'result_size'));
+    }
 
     #function bay se thao tac voi ajax
     
@@ -184,4 +209,5 @@ class ProductController extends Controller
     function testAjax(){
         return view("admin.product.ajax");
     }
+
 }

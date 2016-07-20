@@ -1,6 +1,7 @@
 @extends('users.master')
 
 @section('content')
+@include('users.block.slider')
 <section class="main-content">
 	<div class="row">
 		<div class="span12">													
@@ -106,7 +107,7 @@
 							<div class="active item">
 								<ul class="thumbnails">												
 									
-									<?php $i = 0; ?>
+									<?php $i = 0;?>
 									@foreach($new_products AS $item)
 									<?php $i++; 
 										if($i == 5){
@@ -115,50 +116,33 @@
 									?>
 									<li class="span3">
 										<div class="product-box">
-											<span class="sale_tag"></span>
-											<p><a href="product_detail.html"><img src="{{ asset('public/themes/images/ladies/1.jpg') }}" alt="" /></a></p>
+											<p><a href="product_detail.html"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
 											<a href="product_detail.html" class="title">{{ $item->name }}</a><br/>
-											<a href="products.html" class="category">Commodo consequat</a>
-											<p class="price">$25.50</p>
+											<a href="products.html" class="category"><?php $cate = DB::table('categories')->select('name')->where('id', $item->cate_id)->first(); echo $cate->name; ?></a>
+											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
-									</li>
+									</li>		
 									@endforeach
 								</ul>
 							</div>
 							<div class="item">
 								<ul class="thumbnails">
+									<?php $i = 0; ?>
+									@foreach($new_products AS $item)
+									<?php $i++; 
+										if($i <= 4){
+											continue;
+										}
+									?>
 									<li class="span3">
 										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('public/themes/images/ladies/1.jpg') }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Know exactly</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$45.50</p>
+											<p><a href="product_detail.html"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
+											<a href="product_detail.html" class="title">{{ $item->name }}</a><br/>
+											<a href="products.html" class="category"><?php $cate = DB::table('categories')->select('name')->where('id', $item->cate_id)->first(); echo $cate->name; ?></a>
+											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('public/themes/images/ladies/1.jpg') }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-											<a href="products.html" class="category">Commodo consequat</a>
-											<p class="price">$33.50</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('public/themes/images/ladies/1.jpg') }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">You think water</a><br/>
-											<a href="products.html" class="category">World once</a>
-											<p class="price">$45.30</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('public/themes/images/ladies/1.jpg') }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$25.20</p>
-										</div>
-									</li>																																	
+									</li>		
+									@endforeach																																
 								</ul>
 							</div>
 						</div>							

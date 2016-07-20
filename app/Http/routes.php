@@ -16,6 +16,30 @@
 Route::auth();
 
 Route::get('/', 'HomeController@index');
+Route::get('/{id}56651-{slug}', ['as' =>'productsOfCategory', 'uses'=>'ProductController@showProduct']);
+Route::get('/{id}15664-{slug}', ['as' => 'productDetail', 'uses' => 'ProductController@viewDetail']);
+
+
+
+
+Route::get('test_product', function(){
+	return view('users.pages.product');
+});
+Route::get('test_detail', function(){
+	return view('users.pages.detail');
+});
+Route::get('test_cart', function(){
+	return view('users.pages.cart');
+});
+Route::get('test_checkout', function(){
+	return view('users.pages.checkout');
+});
+Route::get('test_contact', function(){
+	return view('users.pages.contact');
+});
+Route::get('test_register', function(){
+	return view('users.pages.register');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'category'], function () {

@@ -5,11 +5,11 @@
 						<ul>
 							<?php $cate_level_1 = DB::table('categories')->where('parent_id', 0)->get(); ?>
 							@foreach($cate_level_1 AS $value)
-							<li><a href="./products.html">{{ $value->name }}</a>
+							<li><a href="{{ route('productsOfCategory', ['id'=>$value->id, 'slug'=>$value->slug]) }}">{{ $value->name }}</a>
 								<ul>									
 									<?php $cate_level_2 = DB::table('categories')->where('parent_id', $value->id)->get(); ?>
 									@foreach($cate_level_2 AS $value2)
-									<li><a href="./products.html">{{ $value2->name }}</a></li>
+									<li><a href="{{ route('productsOfCategory', ['id'=>$value2->id, 'slug'=>$value2->slug]) }}">{{ $value2->name }}</a></li>
 									@endforeach
 								</ul>
 							</li>
@@ -23,8 +23,8 @@
 								</ul>
 							</li>							
 							<li><a href="./products.html">Hangbag</a></li> -->
-							<li><a href="./products.html">Best Seller</a></li>
-							<li><a href="./products.html">Top Seller</a></li>
+							<li><a href="./products.html">Tốt nhất</a></li>
+							<li><a href="./products.html">Bán chạy</a></li>
 						</ul>
 					</nav>
 				</div>
