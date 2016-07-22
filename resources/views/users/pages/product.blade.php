@@ -12,7 +12,7 @@
 									<span class="sale_tag"></span>									<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img alt="" src="{{ asset('resources/upload/images/products/avatar/'. $item->image) }}"></a><br/>
 									<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
 									<!-- <a href="#" class="category">Phasellus consequat</a> -->
-									<p class="price">{{ $item->saleprice }}</p>
+									<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 								</div>
 							</li>       
 							@endforeach

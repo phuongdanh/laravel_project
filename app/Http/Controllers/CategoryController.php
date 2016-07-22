@@ -29,7 +29,7 @@ class CategoryController extends Controller
     	$category->name = $request->txtCateName;
     	$category->slug = SupportFunction::convertStr($request->txtCateName);
     	$category->description = $request->txtDescription;
-        $category->user_id = 1;
+        $category->user_id = 4;
     	$category->keyWords = $request->txtKey;
     	$category->parent_id = $request->parent_id;
     	$category->save();

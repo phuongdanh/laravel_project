@@ -1,5 +1,6 @@
 @extends('users.master')
 @section('content')
+<?php $title_banner = 'Tiến hành thanh toán'; ?>
 @include('users.block.banner')
 <section class="main-content">
 				<div class="row">

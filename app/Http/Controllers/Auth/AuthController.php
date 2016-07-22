@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -69,4 +71,14 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+public function login(Request $request){
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if(Auth::attempt($data)){
+            return url('/');
+        }
+    }
+   
 }

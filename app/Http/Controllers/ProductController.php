@@ -84,7 +84,7 @@ class ProductController extends Controller
     
     #function thuc hien show list product ra ngoai
     function getList(){
-        $products = Product::select("id","name","cate_id","price", 'saleprice',"created_at")->orderBy('created_at', 'DESC')->get();
+        $products = Product::select("id","name","cate_id","price", 'saleprice',"created_at")->orderBy('id', 'DESC')->get();
         return view('admin.product.list', compact('products',$products));
     }
     
@@ -183,6 +183,8 @@ class ProductController extends Controller
     #function viewDetail sẽ show ra chi tiếc của một sản phẩm
     function viewDetail($id){
         $product = Product::where('id', $id)->first()->toArray();
+        $cate = Category::where('id', $product['cate_id'])->select('name')->first();
+
         $sizes = Size::select('id', 'name')->get();
         $aSize = Product::find($id)->getsizes->toArray();
         $sizeProducts = array();
@@ -196,7 +198,14 @@ class ProductController extends Controller
             }
         }
         #var_dump($result_size);
-        return view('users.pages.detail', compact('product', 'result_size'));
+
+        #thực hiện lấy các sản phẩm liên quan
+        $related_products = Product::where('cate_id', $product['cate_id'])
+                            ->where('id', '<>', $id)->select('id','name', 'saleprice', 'image', 'slug', 'cate_id')->skip(0)->take(6)
+                            ->orderBy('id', 'DESC')->get()->toArray();
+
+
+        return view('users.pages.detail', compact('product', 'result_size', 'related_products', 'cate'));
     }
 
     #function bay se thao tac voi ajax
@@ -211,3 +220,4 @@ class ProductController extends Controller
     }
 
 }
+ 

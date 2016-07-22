@@ -18,8 +18,9 @@ Route::auth();
 Route::get('/', 'HomeController@index');
 Route::get('/{id}56651-{slug}', ['as' =>'productsOfCategory', 'uses'=>'ProductController@showProduct']);
 Route::get('/{id}15664-{slug}', ['as' => 'productDetail', 'uses' => 'ProductController@viewDetail']);
-
-
+Route::get('/dang-ky-hoac-dang-ky', ['as' => 'loginOrRegister', 'uses' => 'UserController@forms']);
+Route::post('/xu-ly-dang-ky', ['as' => 'xu-ly-dang-ky', 'uses' => 'UserController@postRegister']);
+Route::post('dang-nhap', ['as' => 'dang-nhap', 'uses' => 'Auth\AuthController@login']);
 
 
 Route::get('test_product', function(){
@@ -58,9 +59,23 @@ Route::group(['prefix' => 'admin'], function () {
 	    Route::post('postEdit/{id}', ['as' => 'postEditProduct', 'uses' => 'ProductController@postEdit']);
 	    Route::get('delete/{id}', ['as' => 'deleteProduct', 'uses' => 'ProductController@deleteProduct']);
 	});
+	Route::group(['prefix' => 'users'], function () {
+	    Route::get('listUser', ['as' => 'listUser', 'uses' => 'UserController@listUser']);
+	    // Route::get('getAdd', ['as' => 'getAddProduct', 'uses' => 'ProductController@getAdd']);
+	    // Route::post('postAdd', ['as' => 'postAddProduct', 'uses' => 'ProductController@postAdd']);
+	    Route::get('getEdit/{id}', ['as' => 'getEditUser', 'uses' => 'UserController@getEdit']);
+	    Route::post('postEdit/{id}', ['as' => 'postEditUser', 'uses' => 'UserController@postEdit']);
+	    Route::get('delete/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@delete']);
+	});
+
+
 	Route::group(['prefix' => 'image'], function(){
 		Route::post('delete', ['as' => 'deleteImage', 'uses' => 'ImageController@postDelete']);
 	});
 });
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
