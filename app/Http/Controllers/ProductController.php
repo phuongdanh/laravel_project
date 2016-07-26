@@ -177,7 +177,7 @@ class ProductController extends Controller
     function showProduct($id){
         $cate = Category::where('id',$id)->first();
         $cate_name = $cate->name;
-        $products = Product::select('id','name', 'saleprice', 'image', 'slug')->where('cate_id', $id)->orderBy('id', 'DESC')->get();
+        $products = Product::select('id','name', 'saleprice', 'image', 'slug')->where('cate_id', $id)->orderBy('id', 'DESC')->paginate(9);
         return view('users.pages.product', compact('products', 'cate_name'));
     }
     #function viewDetail sẽ show ra chi tiếc của một sản phẩm
@@ -197,7 +197,8 @@ class ProductController extends Controller
                 $result_size[] = $size;
             }
         }
-        #var_dump($result_size);
+        #Lấy image detail
+        $images = Product::find($id)->getimages->toArray();
 
         #thực hiện lấy các sản phẩm liên quan
         $related_products = Product::where('cate_id', $product['cate_id'])
@@ -205,7 +206,7 @@ class ProductController extends Controller
                             ->orderBy('id', 'DESC')->get()->toArray();
 
 
-        return view('users.pages.detail', compact('product', 'result_size', 'related_products', 'cate'));
+        return view('users.pages.detail', compact('product', 'result_size', 'related_products', 'cate', 'images'));
     }
 
     #function bay se thao tac voi ajax

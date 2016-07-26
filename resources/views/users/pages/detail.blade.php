@@ -7,22 +7,17 @@
 					<div class="span9">
 						<div class="row">
 							<div class="span4">
-								<a href="#resources/upload/images/products/avatar/{{ $product['image'] }}"  class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="resources/upload/images/products/avatar/{{ $product['image'] }}"></a>								
-								<ul class="thumbnails small">								
+								<a href="resources/upload/images/products/avatar/{{ $product['image'] }}"  class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="resources/upload/images/products/avatar/{{ $product['image'] }}"></a>								
+								<ul class="thumbnails small">	
+									@foreach($images AS $image)							
 									<li class="span1">
-										<a href="themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>
+										<a href="{{ $image['path'] }}" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="{{ $image['path'] }}" alt=""></a>
 									</li>								
-									<li class="span1">
-										<a href="themes/images/ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="themes/images/ladies/3.jpg" alt=""></a>
-									</li>													
-									<li class="span1">
-										<a href="themes/images/ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="themes/images/ladies/4.jpg" alt=""></a>
-									</li>
-									<li class="span1">
-										<a href="themes/images/ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="themes/images/ladies/5.jpg" alt=""></a>
-									</li>
+									@endforeach
 								</ul>
 							</div>
+							<form class="form-inline" method="post" action="{{ route('mua-hang') }}">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="span5">
 								<address>
 									<strong>Tên sản phẩm:</strong> <span>{{ $product['name'] }}</span><br>
@@ -30,7 +25,7 @@
 									<strong>Loại sản phẩm:</strong> <span>{{ $cate['name'] }}</span><br>
 									<strong>Kích thước:</strong> 
 										<span>
-											<select>
+											<select name="size">
 												@foreach($result_size AS $size)
 												<option value="{{ $size->id }}">{{ $size->name }}</option>
 												@endforeach
@@ -41,14 +36,15 @@
 								<h4><strong>Giá: {{ number_format($product['saleprice']) }} VNĐ</strong></h4>
 							</div>
 							<div class="span5">
-								<form class="form-inline">
-									
+								
+									<input type="hidden" name="id" value="{{ $product['id'] }}">
 									<p>&nbsp;</p>
 									<label>Số lượng:</label>
-									<input type="text" class="span1" value="1">
+									<input type="text" name="quantity" class="span1" value="1">
 									<button class="btn btn-inverse" type="submit">Thêm vào giỏ hàng</button>
-								</form>
-							</div>							
+								
+							</div>	
+							</form>						
 						</div>
 						<div class="row">
 							<div class="span9">

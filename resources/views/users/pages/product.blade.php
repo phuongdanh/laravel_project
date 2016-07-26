@@ -19,13 +19,26 @@
 						</ul>								
 						<hr>
 						<div class="pagination pagination-small pagination-centered">
+
 							<ul>
-								<li><a href="#">Prev</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">Next</a></li>
+								@if($products->currentPage() != 1)
+								<li><a href="{{ $products->url($products->currentPage() - 1) }}">Trước</a></li>
+								@else
+								<li class="disabled"><a href="{{ $products->url($products->currentPage() - 1) }}">Trước</a></li>
+								@endif
+								@for($i = 1; $i <= $products->lastPage(); $i++)
+									@if($products->currentPage() == $i)
+										<li class="active"><a href="{{ $products->url($i) }}">{{ $i }}</a></li>
+									@else
+									<li class=""><a href="{{ $products->url($i) }}">{{ $i }}</a></li>
+									@endif
+
+								@endfor
+								@if($products->currentPage() != $products->lastPage())
+								<li><a href="{{ $products->url($products->currentPage() + 1) }}">Tiếp</a></li>
+								@else
+								<li class="disabled"><a href="{{ $products->url($products->currentPage() + 1) }}">Tiếp</a></li>
+								@endif
 							</ul>
 						</div>
 					</div>

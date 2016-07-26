@@ -9,7 +9,7 @@
 				<div class="account pull-right">
 					<ul class="user-menu">				
 						<li><a href="#">Tài khoản</a></li>
-						<li><a href="cart.html">Giỏ hàng</a></li>
+						<li><a href="{{ route('gio-hang') }}">Giỏ hàng</a></li>
 						<li><a href="checkout.html">Thanh toán</a></li>
 						@if (Auth::guest())
 	                    <li><a href="{{ route('loginOrRegister') }}">Đăng nhập</a></li>	

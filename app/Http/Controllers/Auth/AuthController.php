@@ -71,14 +71,30 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-public function login(Request $request){
+    public function login(Request $request){
         $data = [
             'email' => $request->email,
             'password' => $request->password,
         ];
         if(Auth::attempt($data)){
-            return url('/');
+            return redirect()->back();
         }
     }
-   
+    public function getAdminLogin(){
+        return view('admin.login');
+    }
+    public function postAdminLogin(Request $request){
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 1,
+        ];
+        if(Auth::attempt($data)){
+            return redirect('admin/product/getList');
+        }else{
+            return redirect()->back();
+        }
+    }
 }
+
+ 

@@ -22,6 +22,10 @@ Route::get('/dang-ky-hoac-dang-ky', ['as' => 'loginOrRegister', 'uses' => 'UserC
 Route::post('/xu-ly-dang-ky', ['as' => 'xu-ly-dang-ky', 'uses' => 'UserController@postRegister']);
 Route::post('dang-nhap', ['as' => 'dang-nhap', 'uses' => 'Auth\AuthController@login']);
 
+Route::post('mua-hang', ['as' => 'mua-hang', 'uses' => 'OrderController@muahang']);
+Route::get('gio-hang', ['as' => 'gio-hang', 'uses' => 'OrderController@giohang']);
+Route::get('xoa-gio-hang/{rowId}', ['as' => 'xoa-gio-hang', 'uses' => 'OrderController@xoagiohang']);
+
 
 Route::get('test_product', function(){
 	return view('users.pages.product');
@@ -42,7 +46,7 @@ Route::get('test_register', function(){
 	return view('users.pages.register');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'category'], function () {
 	    Route::get('list',['as'=>'admin.cate.list','uses' => 'CategoryController@getList']);
 	    Route::get('getAdd',['as'=>'admin.cate.getAdd','uses' => 'CategoryController@getAdd']);
@@ -74,6 +78,8 @@ Route::group(['prefix' => 'admin'], function () {
 	});
 });
 
+Route::get('admin/form-login', ['as' => 'getAdminLogin', 'uses' => 'Auth\AuthController@getAdminLogin']);
+Route::post('admin/login', ['as' => 'postAdminLogin', 'uses' => 'Auth\AuthController@postAdminLogin']);
 
 
 Route::auth();

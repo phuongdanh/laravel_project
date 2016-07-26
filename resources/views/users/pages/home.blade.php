@@ -116,9 +116,10 @@
 									?>
 									<li class="span3">
 										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">{{ $item->name }}</a><br/>
-											<a href="products.html" class="category"><?php $cate = DB::table('categories')->select('name')->where('id', $item->cate_id)->first(); echo $cate->name; ?></a>
+											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
+											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
+											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>		
@@ -136,9 +137,10 @@
 									?>
 									<li class="span3">
 										<div class="product-box">
-											<p><a href="product_detail.html"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
-											<a href="product_detail.html" class="title">{{ $item->name }}</a><br/>
-											<a href="products.html" class="category"><?php $cate = DB::table('categories')->select('name')->where('id', $item->cate_id)->first(); echo $cate->name; ?></a>
+											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
+											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
+											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>		

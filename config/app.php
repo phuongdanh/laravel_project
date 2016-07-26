@@ -156,6 +156,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
 
     ],
 
@@ -203,6 +204,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'SupportFunction' => 'App\Helpers\supportFunction',
+        'Cart'            => \Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];
