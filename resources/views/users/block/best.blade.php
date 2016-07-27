@@ -1,23 +1,15 @@
+<?php $best_products = DB::table('products')->select('id', 'name', 'saleprice', 'image', 'cate_id', 'slug', 'created_at')->orderBy('saled', 'DESC')->skip(0)->take(3)->get(); ?>
+
 <div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
-							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
-							</ul>
-						</div>
+	<h4 class="title"><strong>Bán</strong> Chạy Nhất</h4>								
+	<ul class="small-product">
+		@foreach($best_products AS $item)
+		<li>
+			<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" title="{{ $item->name }}">
+				<img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="{{ $item->name }}">
+			</a>
+			<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->name }}</a>
+		</li> 
+		@endforeach  
+	</ul>
+</div>

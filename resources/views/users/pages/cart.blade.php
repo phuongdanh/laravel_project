@@ -25,7 +25,17 @@
 									<td><a href="{{ route('xoa-gio-hang', $item['rowid']) }}">Xóa</a></td>
 									<td><a href=""><img width="200px" alt="" src="{{ isset($item['options']['image']) ? asset('resources/upload/images/products/avatar/'. $item['options']['image']) : null }}"></a></td>
 									<td>{{ $item['name'] }}</td>
-									<td><input type="text" value="{{ $item['qty'] }}" class="input-mini"></td>
+									<td>
+										<div class="col-md-1">
+											<form action="{{ route('capnhatgiohang', $item['rowid']) }}" method="post">
+												<input type="hidden" name="_token" value="{{ csrf_token() }}">
+												<input type="text" value="{{ $item['qty'] }}" name="quantity" class="input-mini">
+												<br />
+												<button class="btn btn-default" type="submit">Change</button>
+											</form>
+											
+										</div>
+									</td>
 									<td>
 										<?php  
 										if(isset($item['options']['size'])){
@@ -56,9 +66,8 @@
 						
 						<hr/>
 						<p class="buttons center">				
-							<button class="btn" type="button">Update</button>
-							<button class="btn" type="button">Continue</button>
-							<button class="btn btn-inverse" type="submit" id="checkout">Checkout</button>
+							<a href="{{ url('/') }}" class="btn btn-default">Tiếp tục mua</a>
+							<a href="{{ url('tien-hanh-thanh-toan') }}" class="btn btn-info">Thanh toán</a>
 						</p>					
 					</div>
 					<div class="span3 col">

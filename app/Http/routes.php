@@ -25,6 +25,10 @@ Route::post('dang-nhap', ['as' => 'dang-nhap', 'uses' => 'Auth\AuthController@lo
 Route::post('mua-hang', ['as' => 'mua-hang', 'uses' => 'OrderController@muahang']);
 Route::get('gio-hang', ['as' => 'gio-hang', 'uses' => 'OrderController@giohang']);
 Route::get('xoa-gio-hang/{rowId}', ['as' => 'xoa-gio-hang', 'uses' => 'OrderController@xoagiohang']);
+Route::post('cap-nhat-gio-hang/{rowId}', ['as' => 'capnhatgiohang', 'uses' => 'OrderController@capnhatgiohang']);
+Route::get('tien-hanh-thanh-toan',['as' => 'tienhanhthanhtoan', 'uses' => 'OrderController@tienhanhthanhtoan']);
+Route::post('xu-ly-thanh-toan',['as' => 'xulythanhtoan', 'uses' => 'OrderController@xulythanhtoan']);
+
 
 
 Route::get('test_product', function(){
@@ -62,6 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	    Route::get('getEdit/{id}', ['as' => 'getEditProduct', 'uses' => 'ProductController@getEdit']);
 	    Route::post('postEdit/{id}', ['as' => 'postEditProduct', 'uses' => 'ProductController@postEdit']);
 	    Route::get('delete/{id}', ['as' => 'deleteProduct', 'uses' => 'ProductController@deleteProduct']);
+	    Route::get('reset-saled',['as' => 'reset-saled', 'uses' => 'ProductController@resetsaled']);
 	});
 	Route::group(['prefix' => 'users'], function () {
 	    Route::get('listUser', ['as' => 'listUser', 'uses' => 'UserController@listUser']);
@@ -71,12 +76,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	    Route::post('postEdit/{id}', ['as' => 'postEditUser', 'uses' => 'UserController@postEdit']);
 	    Route::get('delete/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@delete']);
 	});
-
-
 	Route::group(['prefix' => 'image'], function(){
 		Route::post('delete', ['as' => 'deleteImage', 'uses' => 'ImageController@postDelete']);
 	});
+	Route::group(['prefix' => 'order'], function(){
+		Route::get('list', ['as' => 'listOrder', 'uses' => 'OrderController@getList']);
+	});
 });
+
+
+
 
 Route::get('admin/form-login', ['as' => 'getAdminLogin', 'uses' => 'Auth\AuthController@getAdminLogin']);
 Route::post('admin/login', ['as' => 'postAdminLogin', 'uses' => 'Auth\AuthController@postAdminLogin']);

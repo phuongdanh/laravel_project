@@ -1,6 +1,6 @@
 <section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="{{ asset('public/themes/images/logo.png') }}" class="site_logo" alt=""></a>
+					<a href="{{ url('/') }}" class="logo pull-left"><img src="{{ asset('public/themes/images/logo.png') }}" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
 							<?php $cate_level_1 = DB::table('categories')->where('parent_id', 0)->get(); ?>

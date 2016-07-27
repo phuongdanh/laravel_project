@@ -182,7 +182,13 @@ class ProductController extends Controller
     }
     #function viewDetail sẽ show ra chi tiếc của một sản phẩm
     function viewDetail($id){
+
+        $item = Product::find($id);;
+        $item->viewed = $item->viewed + 1;
+        $item->save();
+
         $product = Product::where('id', $id)->first()->toArray();
+
         $cate = Category::where('id', $product['cate_id'])->select('name')->first();
 
         $sizes = Size::select('id', 'name')->get();
@@ -209,6 +215,16 @@ class ProductController extends Controller
         return view('users.pages.detail', compact('product', 'result_size', 'related_products', 'cate', 'images'));
     }
 
+
+    #ham nay co chuc nang reset saled
+    function resetsaled(){
+        $product = Product::where('id', '>', 0)->update(['saled' => 0]);
+    }
+
+
+
+
+
     #function bay se thao tac voi ajax
     
     function getData(){
@@ -216,6 +232,9 @@ class ProductController extends Controller
         return $products;
     }
     
+
+
+
     function testAjax(){
         return view("admin.product.ajax");
     }

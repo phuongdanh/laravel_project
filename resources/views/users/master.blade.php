@@ -21,6 +21,7 @@
 		<script src="{{ asset('public/bootstrap/js/bootstrap.min.js') }}"></script>				
 		<script src="{{ asset('public/themes/js/superfish.js') }}"></script>	
 		<script src="{{ asset('public/themes/js/jquery.scrolltotop.js') }}"></script>
+		<script src="{{ asset('public/myscript.js') }}"></script>
 		<!--[if lt IE 9]>			
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
