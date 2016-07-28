@@ -30,7 +30,7 @@
 											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
 											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
 											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
-											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>
@@ -53,7 +53,7 @@
 											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
 											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
 											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
-											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>		
@@ -90,7 +90,7 @@
 											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
 											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
 											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
-											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>		
@@ -111,7 +111,7 @@
 											<p><a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}"><img src="{{ asset('resources/upload/images/products/avatar/'.$item->image) }}" alt="" /></a></p>
 											<a href="{{ route('productDetail', ['id' => $item->id, 'slug' => $item->slug]) }}" class="title">{{ $item->name }}</a><br/>
 											<?php $cate = DB::table('categories')->where('id', $item->cate_id)->first(); ?>
-											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->id }}{{ $cate->name }}</a>
+											<a href="{{ route('productsOfCategory', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="category">{{ $cate->name }}</a>
 											<p class="price">{{ number_format($item->saleprice) }} VNĐ</p>
 										</div>
 									</li>		

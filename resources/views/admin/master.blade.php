@@ -123,10 +123,13 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-users fa-fw"></i>Orders<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{ route('listUser') }}">List User</a>
+                                        <a href="{{ route('listOrder') }}">List orders</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('newOrder') }}">New orders</a>
                                     </li>
                                     
                                 </ul>

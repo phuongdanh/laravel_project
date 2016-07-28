@@ -81,6 +81,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	});
 	Route::group(['prefix' => 'order'], function(){
 		Route::get('list', ['as' => 'listOrder', 'uses' => 'OrderController@getList']);
+		Route::get('new', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
+		Route::get('delete/{id}', ['as' => 'deleteOrder', 'uses' => 'OrderController@deleteOrder']);
+		Route::get('view/{id}', ['as' => 'viewOrder', 'uses' => 'OrderController@viewOrder']);
+		Route::get('confirm/{id}', ['as' => 'confirmOrder', 'uses' => 'OrderController@confirmOrder']);
 	});
 });
 

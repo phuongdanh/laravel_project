@@ -13,16 +13,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'customerInfo' , 'cartInfo'
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'id',
+        'id','user_id', 'customerInfo' , 'cartInfo'
     ];
 
     public $timestamps = true;

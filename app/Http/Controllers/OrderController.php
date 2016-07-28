@@ -73,8 +73,33 @@ class OrderController extends Controller
 	}
 
     function getList(){
-        $orders = Order::orderBy('id', 'DESC')->get()->toArray();
+        $orders = Order::orderBy('status','ASC')->get()->toArray();
         return view('admin.order.list', compact('orders'));
+    }
+    function newOrder(){
+        $orders = Order::where('status', 0)->orderBy('id', 'DESC')->get()->toArray();
+        return view('admin.order.new', compact('orders'));
+    }
+    function deleteOrder($id){
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->back();
+    }
+    function viewOrder($id){
+        $order = Order::where('id', $id)->first()->toArray();
+        if($order['status'] == 0){
+            $luu = Order::find($id);
+            $luu->status = 1;
+            $luu->save();
+        }
+        
+        return view('admin.order.view', compact('order'));
+    }
+    function confirmOrder($id){
+        $luu = Order::find($id);
+        $luu->status = 2;
+        $luu->save();
+        return redirect()->back();
     }
 }
 

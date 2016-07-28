@@ -1,7 +1,7 @@
 
 @extends('admin.master')
 @section('pageHeader', 'Đơn hàng')
-@section('function', 'Danh sách')
+@section('function', 'Mới')
 @section('content')
 <!-- /.col-lg-12 -->
 
