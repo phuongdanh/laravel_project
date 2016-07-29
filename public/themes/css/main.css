@@ -776,3 +776,9 @@ section.our_client .row{
 		border-bottom:1px solid #eee;
 	}
 }
+.search-query{
+	color: #999999;
+}
+.input-block-level{
+	color: #999999;
+}

@@ -14,6 +14,10 @@ use App\Product;
 class OrderController extends Controller
 {
     function muahang(Request $request){
+        $product = Product::where('id', $request->id)->first()->toArray();
+        if($request->quantity > $product['quantity']){
+            return  redirect()->back()->with('flash-message','Hiện tại của hàng không đủ để số lượng mà bạn mua!');
+        }
     	$item = DB::table('products')->where('id', $request->id)->first();
     	Cart::add(['id' => $item->id, 'name' => $item->name, 'qty' => $request->quantity, 'price' => $item->saleprice, 'options' => ['size' => $request->size,'image' => $item->image]]);
     	$content = Cart::content();

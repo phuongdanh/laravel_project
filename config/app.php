@@ -156,7 +156,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
-        \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        'Mmanos\Search\SearchServiceProvider',
 
     ],
 
@@ -205,6 +206,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'SupportFunction' => 'App\Helpers\supportFunction',
         'Cart'            => \Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Search' => 'Mmanos\Search\Facade',
     ],
 
 ];

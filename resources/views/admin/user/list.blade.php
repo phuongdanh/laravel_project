@@ -22,7 +22,7 @@
                             <?php $i++; ?>
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $i }}</td>
-                                <td>{{ $item['firstname'] }} {{ $item['lastname'] }}</td>
+                                <td>{{ $item['firstname'] }} {{ $item['lastname'] }}<?php if($item['status'] == 0){ echo '<span class="label label-danger">New</span>'; } ?></td>
                                 <td>{{ $item['address'] }}</td>
                                 <td>
                                     @if($item['role'] == 0)

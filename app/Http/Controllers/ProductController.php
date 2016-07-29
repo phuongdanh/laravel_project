@@ -13,6 +13,7 @@ use File;
 use App\Helpers\SupportFunction;
 use App\Size;
 use App\ProductSize;
+use DB;
 
 class ProductController extends Controller
 {
@@ -221,6 +222,18 @@ class ProductController extends Controller
         $product = Product::where('id', '>', 0)->update(['saled' => 0]);
     }
 
+    #ham search
+    function xltimkiem(Request $request){
+        $products = DB::table('products')->where('name', 'like', '%'.$request->key.'%')->orderBy('id', 'DESC')->paginate(9);
+        return view('users.pages.timkiem', compact('products'));
+    }
+
+    //  function showProduct($id){
+    //     $cate = Category::where('id',$id)->first();
+    //     $cate_name = $cate->name;
+    //     $products = Product::select('id','name', 'saleprice', 'image', 'slug')->where('cate_id', $id)->orderBy('id', 'DESC')->paginate(9);
+    //     return view('users.pages.product', compact('products', 'cate_name'));
+    // }
 
 
 

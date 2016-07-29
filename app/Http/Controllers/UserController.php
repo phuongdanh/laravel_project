@@ -27,6 +27,7 @@ class UserController extends Controller
     }
     public function listUser(){
     	$users = User::orderBy('id', 'DESC')->get()->toArray();
+        User::where('id', '<>', 0) ->update(['status' => 1]);;
     	return view('admin.user.list', compact('users'));
     }
     public function delete($id){

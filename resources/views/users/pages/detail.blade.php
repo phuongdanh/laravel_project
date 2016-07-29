@@ -5,7 +5,11 @@
 <section class="main-content">				
 				<div class="row">						
 					<div class="span9">
+					@if (Session::has('flash-message'))
+						    <div class="alert alert-warning">{{ Session::get('flash-message') }}</div>
+						@endif
 						<div class="row">
+							
 							<div class="span4">
 								<a href="resources/upload/images/products/avatar/{{ $product['image'] }}"  class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="resources/upload/images/products/avatar/{{ $product['image'] }}"></a>								
 								<ul class="thumbnails small">	
@@ -60,11 +64,11 @@
 										{!! $product['intro'] !!}
 									</div>
 								</div>							
-							</div>				
+							</div>	
 							<div class="span9">	
 								<br>
 								<h4 class="title">
-									<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+									<span class="pull-left"><span class="text"><strong>Sản phẩm</strong> Liên quan</span></span>
 									<span class="pull-right">
 										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
 									</span>
@@ -118,3 +122,6 @@
 				</div>
 			</section>
 @endsection
+1: Hoài, 
+3: Linh, Lương, Hạnh (khùng), Dung,
+5: Danh

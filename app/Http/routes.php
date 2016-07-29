@@ -29,26 +29,7 @@ Route::post('cap-nhat-gio-hang/{rowId}', ['as' => 'capnhatgiohang', 'uses' => 'O
 Route::get('tien-hanh-thanh-toan',['as' => 'tienhanhthanhtoan', 'uses' => 'OrderController@tienhanhthanhtoan']);
 Route::post('xu-ly-thanh-toan',['as' => 'xulythanhtoan', 'uses' => 'OrderController@xulythanhtoan']);
 
-
-
-Route::get('test_product', function(){
-	return view('users.pages.product');
-});
-Route::get('test_detail', function(){
-	return view('users.pages.detail');
-});
-Route::get('test_cart', function(){
-	return view('users.pages.cart');
-});
-Route::get('test_checkout', function(){
-	return view('users.pages.checkout');
-});
-Route::get('test_contact', function(){
-	return view('users.pages.contact');
-});
-Route::get('test_register', function(){
-	return view('users.pages.register');
-});
+Route::get('tim-kiem', ['as' => 'xltimkiem', 'uses' => 'ProductController@xltimkiem']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'category'], function () {
