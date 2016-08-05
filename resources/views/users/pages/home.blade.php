@@ -128,8 +128,8 @@
 					<div class="service">
 						<div class="responsive">	
 							<img src="{{ asset('public/themes/images/feature_img_2.png') }}" alt="" />
-							<h4>MODERN <strong>DESIGN</strong></h4>
-							<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>									
+							<h4>THIẾT KẾ <strong>MỚI MẺ</strong></h4>
+							<p>Chúng tôi luôn chú trọng vào kiểu dáng, chất lượng sản phẩm, để mang đến cho người dùng thời trang hoàn hảo nhất.</p>									
 						</div>
 					</div>
 				</div>
@@ -137,8 +137,8 @@
 					<div class="service">
 						<div class="customize">			
 							<img src="{{ asset('public/themes/images/feature_img_1.png') }}" alt="" />
-							<h4>FREE <strong>SHIPPING</strong></h4>
-							<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+							<h4>CHUYỂN HÀNG <strong>MIỄN PHÍ</strong></h4>
+							<p>Xét đến từng đơn hàng, chúng tôi sẽ xem xét việc chuyển giao hoàn toàn miễn phí cho khách hàng.</p>
 						</div>
 					</div>
 				</div>
@@ -146,8 +146,8 @@
 					<div class="service">
 						<div class="support">	
 							<img src="{{ asset('public/themes/images/feature_img_3.png') }}" alt="" />
-							<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
-							<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+							<h4>24/7 HỖ TRỢ <strong>TRỰC TUYẾN</strong></h4>
+							<p>Nếu có bất cứ vấn đề gì thắc mắc, đừng ngần ngại lên hệ với chúng tôi để được hỗ trợ trực tuyến.</p>
 						</div>
 					</div>
 				</div>	
@@ -179,6 +179,3 @@
 	</div>
 </section>																		
 @endsection
-
-
-

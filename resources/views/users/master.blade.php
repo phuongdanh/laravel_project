@@ -58,3 +58,5 @@
 		</script>
     </body>
 </html>
+@extends('admin.master')
+@section('content')
