@@ -32,6 +32,7 @@ Route::post('xu-ly-thanh-toan',['as' => 'xulythanhtoan', 'uses' => 'OrderControl
 Route::get('tim-kiem', ['as' => 'xltimkiem', 'uses' => 'ProductController@xltimkiem']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+	Route::get('/', 'AdminController@statistic');
     Route::group(['prefix' => 'category'], function () {
 	    Route::get('list',['as'=>'admin.cate.list','uses' => 'CategoryController@getList']);
 	    Route::get('getAdd',['as'=>'admin.cate.getAdd','uses' => 'CategoryController@getAdd']);

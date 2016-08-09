@@ -31,9 +31,6 @@
 		@include('users.block.header')
 		<div id="wrapper" class="container">
 			@include('users.block.menu')
-			
-			
-
 			<!-- noi dung se duoc hien thi tai day -->
 			@yield('content')
 
@@ -58,5 +55,3 @@
 		</script>
     </body>
 </html>
-@extends('admin.master')
-@section('content')
